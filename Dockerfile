@@ -117,7 +117,7 @@ COPY . /usr/src/app
 
 RUN npm install
 
-RUN export PATH=$PATH:/usr/local/rvm/bin:/usr/local/rvm/sbin && bundle install
+#RUN export PATH=$PATH:/usr/local/rvm/bin:/usr/local/rvm/sbin && bundle install
 
 #RUN grunt prod
 
