@@ -113,7 +113,7 @@ COPY . /usr/src/app
 
 #RUN gem install compass && gem install font-awesome-sass && gem install sass-css-importer-load-paths && gem install scss_lint
 
-RUN bower --allow-root install
+#RUN bower --allow-root install
 
 RUN npm install
 
