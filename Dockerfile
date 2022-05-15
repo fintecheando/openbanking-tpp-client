@@ -2,11 +2,9 @@ FROM node:10 as builder
 
 RUN apt-get update && apt-get install -y vim
 
-RUN npm install -g @angular/cli
+RUN npm install && npm run build
 
-RUN npm install -g ng-common
-
-RUN ng build
+RUN ls -la 
 
 #CMD ng serve --host 0.0.0.0 --disable-host-check --configuration kubernetes
 
