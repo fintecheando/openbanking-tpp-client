@@ -1,23 +1,12 @@
-FROM node:10 as builder
+FROM node:16 as builder
 
 RUN mkdir -p /app
-
-RUN npm install -g @angular/cli
-
-RUN npm install -g bower
-
-RUN npm install -g ng-common
-
-#CMD ng serve --host 0.0.0.0 --disable-host-check --configuration kubernetes
 
 ADD . /app
 
 WORKDIR /app
-#ENV PATH /app/node_modules/.bin:$PATH
-#RUN npm rebuild node-sass --force
-RUN npm install --force
 
-RUN npm run build
+RUN npm install && npm run build
 
 FROM litespeedtech/openlitespeed:latest AS runner
 
@@ -29,7 +18,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update \
 
 RUN mv /usr/local/lsws/Example /usr/local/lsws/Mifos
 
-COPY --from=builder /usr/src/app/dist/community-app /usr/local/lsws/Mifos/html
+COPY --from=builder /app/build /usr/local/lsws/Mifos/html
 
 COPY ./httpd_config.conf /usr/local/lsws/conf/httpd_config.conf
 
