@@ -7637,9 +7637,9 @@
   @media (orientation: landscape) {
     html[onsflag-iphonex-landscape] .action-sheet {
       /* The width in landscape mode is the same as the width in portrait mode */
-      left: calc((100vw - 100vh + 20px) / 2);
-      right: calc((100vw - 100vh + 20px) / 2);
-      bottom: 33px; /* bottom safe area + 12 pt (extra bottom margin) */
+      left: calc((100vw - (100vh + 20px)) / 2);
+      right: calc((100vw - (100vh + 20px)) / 2);
+      bottom: 48px; /* bottom safe area + 12 pt (extra bottom margin) */
     }
   }
   /* @import './card.css'; */
