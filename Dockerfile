@@ -1,19 +1,23 @@
 FROM node:10 as builder
 
-RUN apt-get update && apt-get install -y vim
+RUN mkdir -p /app
 
-RUN npm install 
+RUN npm install -g @angular/cli
 
-RUN npm run build
+RUN npm install -g bower
+
+RUN npm install -g ng-common
 
 #CMD ng serve --host 0.0.0.0 --disable-host-check --configuration kubernetes
 
 ADD . /app
+
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
-RUN npm rebuild node-sass --force
+#ENV PATH /app/node_modules/.bin:$PATH
+#RUN npm rebuild node-sass --force
 RUN npm install --force
-RUN ng build --configuration kubernetes
+
+RUN npm run build
 
 FROM litespeedtech/openlitespeed:latest AS runner
 
