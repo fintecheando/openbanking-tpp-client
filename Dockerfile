@@ -18,7 +18,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update \
 
 RUN mv /usr/local/lsws/Example /usr/local/lsws/Mifos
 
+RUN mkdir -properties /usr/local/lsws/Mifos/netbank
+
 COPY --from=builder /app/build /usr/local/lsws/Mifos/html
+
+COPY --from=builder /app/build /usr/local/lsws/Mifos/html/netbank
 
 COPY ./httpd_config.conf /usr/local/lsws/conf/httpd_config.conf
 
