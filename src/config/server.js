@@ -1,6 +1,6 @@
 export const SERVER_URL = 'https://payments.dpc.hu/in01/channel/transactions';
 // export const API_URL = 'http://localhost:4000';
-export const API_URL = 'https://acefintech.mlabs.dpc.hu/api';
+export const API_URL = 'http://tpp-server.tiermoney.com/api';
 
 export const getServerUrl = (bank) => `https://${bank}.mlabs.dpc.hu/api/transactions`;
 
