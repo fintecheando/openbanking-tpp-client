@@ -22,7 +22,7 @@ RUN mkdir -p /usr/local/lsws/Mifos/netbank
 
 COPY --from=builder /app/build /usr/local/lsws/Mifos/html
 
-COPY --from=builder /app/build /usr/local/lsws/Mifos/html/netbank
+#COPY --from=builder /app/build /usr/local/lsws/Mifos/html/netbank
 
 COPY ./httpd_config.conf /usr/local/lsws/conf/httpd_config.conf
 
